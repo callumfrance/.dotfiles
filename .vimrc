@@ -34,6 +34,7 @@ Plugin 'ap/vim-css-color'                               " css hex colour highlig
 Plugin 'jparise/vim-graphql'                            " GraphQL detect; highl; indent
 Plugin 'ianks/vim-tsx'                                  " typescript XML highl; indent
 Plugin 'leafgarland/typescript-vim'                     " typescript syntax; highl; indent
+Plugin 'neovimhaskell/haskell-vim.git'                  " haskell support
 
 call vundle#end()
 filetype plugin indent on
@@ -107,6 +108,9 @@ set grepprg=rg\ --vimgrep                       " Program used with the :grep co
 " => Other Settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set noswapfile                                  " Disables vim swap files feature
+if has ("gui_running")
+    set backspace=2                             " Ensure Backspace key works in Insert mode for gVim
+endif
 " TypeScript
 " au BufNewFile,BufRead *.ts setlocal filetype=typescript
 " au BufNewFile,BufRead *.tsx setlocal filetype=typescriptreact
