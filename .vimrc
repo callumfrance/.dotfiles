@@ -1,10 +1,15 @@
 set nocompatible
 
 filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+if has("gui_macvim")                                    " Vundle for macvim
+    set rtp+=~/.vim/bundle/Vundle.vim
+    call vundle#begin()
+elseif has("gui_running")                               " Vundle for gvim
+    set rtp+=$HOME/bundle/Vundle.vim/
+    call vundle#begin('$HOME/bundle/')
+endif
 
-Plugin 'VundleVim/Vundle.vim'
+Plugin 'VundleVim/Vundle.vim'                           " Let vundle manage itself
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Vundle Plugins
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -58,14 +63,12 @@ set t_vb=
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Formatting
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" if has("gui_macvim")
+if has("gui_macvim")                    " macvim window size
 "     set lines=60 columns=100
-" else
-"     " set lines=50 columns=80
-"     set lines=35 columns=80
-"     "winpos 9999 2
-" endif
+elseif has("gui_running")               " gvim window size
+    set lines=50 columns=85
+    "winpos 9999 2
+endif
 
 " set tw=200                " Length of all columns
 " if wrapping enabled, wrap whole at the end of a word
