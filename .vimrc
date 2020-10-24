@@ -101,8 +101,9 @@ set grepprg=rg\ --vimgrep                       " Program used with the :grep co
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Autocommands
+" => Other Settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set noswapfile                                  " Disables vim swap files feature
 " TypeScript
 " au BufNewFile,BufRead *.ts setlocal filetype=typescript
 " au BufNewFile,BufRead *.tsx setlocal filetype=typescriptreact
