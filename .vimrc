@@ -217,6 +217,17 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
+" Coc (Language) Extensions
+let g:coc_global_extensions = [
+        \'coc-python',
+        \'coc-tslint-plugin',
+        \'coc-tsserver',
+        \'coc-emmet',
+        \'coc-css',
+        \'coc-html',
+        \'coc-json',
+        \'coc-phpls',
+        \]
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugin Variables
