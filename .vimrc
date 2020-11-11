@@ -1,15 +1,10 @@
 set nocompatible
 
 filetype off
-if has("gui_macvim")                                    " Vundle for macvim
-    set rtp+=~/.vim/bundle/Vundle.vim
-    call vundle#begin()
-elseif has("gui_running")                               " Vundle for gvim
-    set rtp+=$HOME/bundle/Vundle.vim/
-    call vundle#begin('$HOME/bundle/')
-endif
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
-Plugin 'VundleVim/Vundle.vim'                           " Let vundle manage itself
+Plugin 'VundleVim/Vundle.vim'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Vundle Plugins
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -34,7 +29,10 @@ Plugin 'ap/vim-css-color'                               " css hex colour highlig
 Plugin 'jparise/vim-graphql'                            " GraphQL detect; highl; indent
 Plugin 'ianks/vim-tsx'                                  " typescript XML highl; indent
 Plugin 'leafgarland/typescript-vim'                     " typescript syntax; highl; indent
-Plugin 'neovimhaskell/haskell-vim.git'                  " haskell support
+
+" New plugins that aren't definite includes yet
+Plugin 'towolf/vim-helm'                                " Vim syntax for helm templates
+Plugin 'rayburgemeestre/phpfolding.vim'                 " PHP folding syntaxer
 
 call vundle#end()
 filetype plugin indent on
@@ -44,7 +42,7 @@ filetype plugin on
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Styling
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-colorscheme peachpuff
+colorscheme parsec
 set colorcolumn=80
 " set background=dark
 syntax enable
@@ -64,11 +62,12 @@ set t_vb=
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Formatting
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if has("gui_macvim")                    " macvim window size
-"     set lines=60 columns=100
-elseif has("gui_running")               " gvim window size
-    set lines=50 columns=85
-    "winpos 9999 2
+if has("gui_macvim")
+    set lines=56 columns=90
+" else
+"     " set lines=50 columns=80
+"     set lines=35 columns=80
+"     "winpos 9999 2
 endif
 
 " set tw=200                " Length of all columns
@@ -105,12 +104,9 @@ set grepprg=rg\ --vimgrep                       " Program used with the :grep co
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Other Settings
+" => Miscellaneous Vim Settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set noswapfile                                  " Disables vim swap files feature
-if has ("gui_running")
-    set backspace=2                             " Ensure Backspace key works in Insert mode for gVim
-endif
+set noswapfile                                   " Turns off vim swap files
 " TypeScript
 " au BufNewFile,BufRead *.ts setlocal filetype=typescript
 " au BufNewFile,BufRead *.tsx setlocal filetype=typescriptreact
@@ -131,6 +127,11 @@ command WQ wq
 command Wq wq
 command W w
 command Q q
+"
+" Mapping to close a buffer without losing the split window layout
+"   See: https://stackoverflow.com/questions/4465095/vim-delete-buffer-without-losing-the-split-window
+command Bdd bp|bd #        
+
 " maps normal-mode <tab> key to switching windows
 nnoremap <tab> <C-W>w
 " normal-mode backspace to switch into other direction
@@ -221,17 +222,17 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-" Coc (Language) Extensions
-let g:coc_global_extensions = [
-        \'coc-python',
-        \'coc-tslint-plugin',
-        \'coc-tsserver',
-        \'coc-emmet',
-        \'coc-css',
-        \'coc-html',
-        \'coc-json',
-        \'coc-phpls',
-        \]
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Nerdtree Settings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Opens Nerdtree automatically if vim starts with no specified files
+" Also, increases the amount of columns that it uses
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * 
+            \ if argc() == 0 && !exists("s:std_in") 
+            \ | NERDTree 
+            \ | set columns=110
+            \ | endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugin Variables
