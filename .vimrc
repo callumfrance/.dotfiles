@@ -1,8 +1,14 @@
 set nocompatible
 
 filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+if has("gui_running")                               " Vundle for gvim
+    set rtp+=$HOME/bundle/Vundle.vim/
+    call vundle#begin('$HOME/bundle/')
+else                                                " Vundle for others (macvim)
+    set rtp+=~/.vim/bundle/Vundle.vim
+    call vundle#begin()
+endif
+
 
 Plugin 'VundleVim/Vundle.vim'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -42,12 +48,15 @@ filetype plugin on
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Styling
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-colorscheme parsec
+if has("gui_running")
+    colorscheme peachpuff
+else
+    colorscheme parsec
+endif
 set colorcolumn=80
-" set background=dark
 syntax enable
 set number
-" set antialias             " smoother fonts
+set antialias             " smoother fonts
 set title                   " gives window the title of file
 set wildmenu                " tab completion in NORM gives menu
 " set synmaxcol=100           " max column syntax highlighing for
@@ -62,15 +71,12 @@ set t_vb=
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Formatting
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if has("gui_macvim")
+if has("gui_macvim")                    " macvim window size
     set lines=56 columns=90
-" else
-"     " set lines=50 columns=80
-"     set lines=35 columns=80
-"     "winpos 9999 2
+elseif has("gui_running")               " gvim window size
+    set lines=50 columns=85
 endif
 
-" set tw=200                " Length of all columns
 " if wrapping enabled, wrap whole at the end of a word
 set linebreak
 " by default wrapping is disabled
@@ -107,12 +113,9 @@ set grepprg=rg\ --vimgrep                       " Program used with the :grep co
 " => Miscellaneous Vim Settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set noswapfile                                   " Turns off vim swap files
-" TypeScript
-" au BufNewFile,BufRead *.ts setlocal filetype=typescript
-" au BufNewFile,BufRead *.tsx setlocal filetype=typescriptreact
-
-" Markdown
-" autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+if has ("gui_running")
+    set backspace=2                             " Ensure Backspace key works in Insert mode for gVim
+endif
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -127,7 +130,7 @@ command WQ wq
 command Wq wq
 command W w
 command Q q
-"
+
 " Mapping to close a buffer without losing the split window layout
 "   See: https://stackoverflow.com/questions/4465095/vim-delete-buffer-without-losing-the-split-window
 command Bdd bp|bd #        
@@ -142,6 +145,9 @@ map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 " maps the F3 key to file viewer
 nnoremap <F3> :Explore<CR> 
 
+" Command-line 'paste'command from system register
+"   e.g. use ctrl-p to paste from the clipboard for some command argument
+cnoremap <C-P> <C-R>+
 
 " CoC Code Completion Mappings
 " GoTo code navigation.
@@ -170,7 +176,7 @@ function! WP()
     set guioptions-=r
     set guioptions-=l
 
-    setlocal spellfile="C:\Program Files (x86)\Vim\vimfiles\spell\en.utf-8.add"
+    " setlocal spellfile="C:\Program Files (x86)\Vim\vimfiles\spell\en.utf-8.add"
     setlocal spell spelllang=en_au      " http://vimdoc.sourceforge.net/htmldoc/spell.html
     setlocal syntax=off
     retab
@@ -222,6 +228,19 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
+" Coc (Language) Extensions
+let g:coc_global_extensions = [
+        \'coc-python',
+        \'coc-tslint-plugin',
+        \'coc-tsserver',
+        \'coc-emmet',
+        \'coc-css',
+        \'coc-html',
+        \'coc-json',
+        \'coc-phpls',
+        \]
+
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Nerdtree Settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -233,6 +252,7 @@ autocmd VimEnter *
             \ | NERDTree 
             \ | set columns=110
             \ | endif
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugin Variables

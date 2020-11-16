@@ -14,13 +14,14 @@ if has("gui_running")
     set guioptions-=m
     set guioptions-=r
     set guioptions-=l
+	set guioptions-=L
     set guioptions+=a
     set guioptions+=A
     set guioptions+=c
         " T - (hide) toolbar
         " m - (hide) menubar
         " r - (hide) right hand scrollbar
-        " l - (hide) left hand scrollbar
+        " l - also (hide) left hand scrollbar
         " a - visual mode highlighted text can be pasted
         " A - like 'a' but for modeless selection
         " c - console dialogs instead of popups
