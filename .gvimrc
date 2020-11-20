@@ -76,5 +76,6 @@ if has("gui_macvim")
     " ====================================
     " set guifont=Monaco:h13
     " set guifont=Roboto\ Mono:h13
+    set macligatures
     set guifont=FiraCode-Regular:h14
 endif
