@@ -38,9 +38,18 @@ fi
 # Then, source plugins and add commands to $PATH
 zplug load
 
+export TERM=xterm-256color
+
 alias gitfreshmaster='if git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
     echo "yes, is a git repo"
     git checkout master && git fetch && git pull
 else
     echo "no, is not a git repo"
 fi'
+
+alias chromepen='open -a "Google Chrome"'
+
+alias giveMeK8s='cd ~/Workspace/k8s;
+    gitfreshmaster &&
+    ./tools/setup_dev_environment.py;
+    k9s'
