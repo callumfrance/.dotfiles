@@ -6,7 +6,7 @@
 " Rename file to '.gvimrc' in non-Windows OS
 " (Instead of '_gvimrc')
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if has("gui_running")
+if has("gui_running") && !has("gui_macvim")
     """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
     " => Window Options
     """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -14,7 +14,7 @@ if has("gui_running")
     set guioptions-=m
     set guioptions-=r
     set guioptions-=l
-	set guioptions-=L
+    set guioptions-=L
     set guioptions+=a
     set guioptions+=A
     set guioptions+=c
@@ -68,7 +68,8 @@ endif
 " => MacVim settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has("gui_macvim")
-    set guioptions-=L           " Hides any left scrollbars
+    set guioptions-=L                   " Hides any left scrollbars
+    set guioptions-=r                   " Hides any right scrollbars
     set guicursor+=n-v-c:blinkon0       " cursor doesn't blink
     " ====================================
     " Some font options to choose between:

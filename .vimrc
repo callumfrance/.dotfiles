@@ -1,7 +1,7 @@
 set nocompatible
 
 filetype off
-if has("gui_running")                               " Vundle for gvim
+if has("gui_running") && !has("gui_macvim") 
     set rtp+=$HOME/bundle/Vundle.vim/
     call vundle#begin('$HOME/bundle/')
 else                                                " Vundle for others (macvim)
@@ -48,7 +48,7 @@ filetype plugin on
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Styling
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if has("gui_running")
+if has("gui_running") && !has("gui_macvim") 
     colorscheme peachpuff
 else
     colorscheme parsec
