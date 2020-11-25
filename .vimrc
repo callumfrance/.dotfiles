@@ -18,7 +18,6 @@ Plugin 'flazz/vim-colorschemes'
 Plugin 'vim-scripts/ScrollColors'                       " Colour wheel
 Plugin 'junegunn/goyo.vim'                              " Comfortable page spacing
 Plugin 'tpope/vim-surround'                             " Parentheses; bracket; tag changings
-Plugin 'airblade/vim-gitgutter'                         " Shows changes between git commits
 Plugin 'Yggdroot/indentLine'                            " support for using spaces to indent
 Plugin 'itchyny/lightline.vim'                          " minimal statusline
 
@@ -39,6 +38,13 @@ Plugin 'leafgarland/typescript-vim'                     " typescript syntax; hig
 " New plugins that aren't definite includes yet
 Plugin 'towolf/vim-helm'                                " Vim syntax for helm templates
 Plugin 'rayburgemeestre/phpfolding.vim'                 " PHP folding syntaxer
+
+" Vim Git Gutter
+if has('nvim') || has('patch-8.0.902')
+  Plugin 'mhinz/vim-signify'
+else
+  Plugin 'mhinz/vim-signify', { 'branch': 'legacy' }
+endif
 
 call vundle#end()
 filetype plugin indent on
