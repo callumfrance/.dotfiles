@@ -1,4 +1,5 @@
-PROMPT='%F{208}%2~%f $ '                    # zsh command-line prompt
+PROMPT='%F{254}%2~%f $ '                    # zsh command-line prompt
+                                            # https://jonasjacek.github.io/colors/
 
 autoload -U +X compinit && compinit
 source <(kubectl completion zsh)            # Auto-Completion support for kubectl
@@ -40,12 +41,66 @@ zplug load
 
 export TERM=xterm-256color
 
-alias gitfreshmaster='if git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
-    echo "yes, is a git repo"
-    git checkout master && git fetch && git pull
-else
-    echo "no, is not a git repo"
-fi'
+function git_is_in_local() {
+    local branch=${1}
+    local existed_in_local=$(git branch --list ${branch})
+
+    if [[ -z ${existed_in_local} ]]; then
+        # echo "git is not in local 1"
+        return 1
+    else
+        # echo "git is in local 0"
+        return 0 # 'true'
+    fi
+}
+
+function git_is_in_remote() {
+    local branch=${1}
+    local existed_in_remote=$(git ls-remote --heads origin ${branch})
+
+    if [[ -z ${existed_in_remote} ]]; then
+        # echo "git is not in remote - 1"
+        return 1
+    else
+        # echo "git is in remote 0"
+        return 0 # 'true'
+    fi
+}
+
+function git_check_me_out() {
+    local branch=${1}
+    if git_is_in_remote $branch; then 
+        echo "git checkout $branch; git fetch && git pull";
+        git checkout $branch -q; git fetch -q && git pull -q;
+        return 0 # 'true'
+    else
+        return 1 # 'false'
+    fi
+}
+
+function git_fresh() {
+    local branch_name=${1:-master} # set branch name to parameter of defaults to 'master'
+    if git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
+        # echo "trying $branch_name branch";
+        if git_check_me_out ${branch_name}; then
+            # echo "$branch_name updated"
+            return 0 # 'true'
+        fi
+        branch_name='main'
+        # echo "trying $branch_name branch";
+        if git_check_me_out ${branch_name}; then
+            # echo "$branch_name updated"
+            return 0 # 'true'
+        fi
+    else
+        echo "no, is not a git repo";
+    fi
+}
+
+alias gitfresh='git_fresh'
+
+alias gitcycle='echo "git fetch -q && git pull -q && git push -q";
+    git fetch -q && git pull -q && git push -q'
 
 alias chromepen='open -a "Google Chrome"'
 
@@ -53,3 +108,5 @@ alias giveMeK8s='cd ~/Workspace/k8s;
     gitfreshmaster &&
     ./tools/setup_dev_environment.py;
     k9s'
+export PATH="/usr/local/opt/php@7.4/bin:$PATH"
+export PATH="/usr/local/opt/php@7.4/sbin:$PATH"
