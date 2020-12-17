@@ -4,43 +4,45 @@ filetype off
 if has("gui_running") && !has("gui_macvim") 
     set rtp+=$HOME/bundle/Vundle.vim/
     call vundle#begin('$HOME/bundle/')
-else                                                " Vundle for others (macvim)
+else                                                            " Vundle for others (macvim)
     set rtp+=~/.vim/bundle/Vundle.vim
     call vundle#begin()
 endif
 
 
 Plugin 'VundleVim/Vundle.vim'
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Vundle Plugins
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plugin 'flazz/vim-colorschemes'
-Plugin 'vim-scripts/ScrollColors'                       " Colour wheel
-Plugin 'junegunn/goyo.vim'                              " Comfortable page spacing
-Plugin 'tpope/vim-surround'                             " Parentheses; bracket; tag changings
-Plugin 'Yggdroot/indentLine'                            " support for using spaces to indent
-Plugin 'itchyny/lightline.vim'                          " minimal statusline
+Plugin 'vim-scripts/ScrollColors'                               " Colour wheel
+Plugin 'junegunn/goyo.vim'                                      " Comfortable page spacing
+Plugin 'tpope/vim-surround'                                     " Parentheses; bracket; tag changings
+Plugin 'Yggdroot/indentLine'                                    " support for using spaces to indent
+Plugin 'itchyny/lightline.vim'                                  " minimal statusline
 
 " Software project management
-Plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }   " command-line fuzzy finder
-Plugin 'junegunn/fzf.vim'                               " vim-bindings for fzf 
-Plugin 'neoclide/coc.nvim', {'do': { -> coc#util#install()}} " code completion
-Plugin 'preservim/nerdtree'                             " file system explorer
-Plugin 'Xuyuanp/nerdtree-git-plugin'                    " nerdtree git status flags
+Plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }           " command-line fuzzy finder
+Plugin 'junegunn/fzf.vim'                                       " vim-bindings for fzf 
+Plugin 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}    " code completion
+Plugin 'preservim/nerdtree'                                     " file system explorer
+Plugin 'Xuyuanp/nerdtree-git-plugin'                            " nerdtree git status flags
 
 " Language specific plugins
-Plugin 'mattn/emmet-vim'                                " HTML settings
-Plugin 'ap/vim-css-color'                               " css hex colour highlighting
-Plugin 'jparise/vim-graphql'                            " GraphQL detect; highl; indent
-Plugin 'ianks/vim-tsx'                                  " typescript XML highl; indent
-Plugin 'leafgarland/typescript-vim'                     " typescript syntax; highl; indent
+Plugin 'mattn/emmet-vim'                                        " HTML settings
+Plugin 'ap/vim-css-color'                                       " css hex colour highlighting
+Plugin 'jparise/vim-graphql'                                    " GraphQL detect; highl; indent
+Plugin 'ianks/vim-tsx'                                          " typescript XML highl; indent
+Plugin 'leafgarland/typescript-vim'                             " typescript syntax; highl; indent
+Plugin 'rayburgemeestre/phpfolding.vim'                         " PHP folding syntaxer
 
 " New plugins that aren't definite includes yet
-Plugin 'towolf/vim-helm'                                " Vim syntax for helm templates
-Plugin 'rayburgemeestre/phpfolding.vim'                 " PHP folding syntaxer
+Plugin 'towolf/vim-helm'                                        " Vim syntax for helm templates
+Plugin 'yuezk/vim-js'
+Plugin 'maxmellon/vim-jsx-pretty'
 
-" Vim Git Gutter
-if has('nvim') || has('patch-8.0.902')
+
+if has('nvim') || has('patch-8.0.902')                          " Shows git differences in left-hand column
   Plugin 'mhinz/vim-signify'
 else
   Plugin 'mhinz/vim-signify', { 'branch': 'legacy' }
@@ -51,9 +53,9 @@ filetype plugin indent on
 filetype plugin on
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Styling
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has("gui_running") && !has("gui_macvim") 
     colorscheme peachpuff
 else
@@ -62,24 +64,23 @@ endif
 set colorcolumn=80
 syntax enable
 set number
-set antialias             " smoother fonts
-set title                   " gives window the title of file
-set wildmenu                " tab completion in NORM gives menu
-" set synmaxcol=100           " max column syntax highlighing for
-set encoding=utf-8
+set antialias                                                   " smoother fonts
+set title                                                       " gives window the title of file
+set wildmenu                                                    " tab completion in NORM gives menu
+set encoding=utf-8                                                               
 
 set noerrorbells
 set novisualbell
-set belloff=all               " disable all bells
+set belloff=all                                                 " disable all bells
 set t_vb=
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Formatting
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if has("gui_macvim")                    " macvim window size
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if has("gui_macvim")                                            " macvim window size
     set lines=56 columns=90
-elseif has("gui_running")               " gvim window size
+elseif has("gui_running")                                       " gvim window size
     set lines=50 columns=85
 endif
 
@@ -87,14 +88,14 @@ endif
 set linebreak
 " by default wrapping is disabled
 set nowrap
-set tabstop=4               " use 4 spaces for tabs
+set tabstop=4                                                    " use 4 spaces for tabs
 set softtabstop=4
 set shiftwidth=4
-set noexpandtab             " don't replace a tab with spaces
+set noexpandtab                                                  " don't replace a tab with spaces
 set smarttab
-set smartindent             " autoindenting when starting new line
+set smartindent                                                  " autoindenting when starting new line
 set autoindent
-set shiftround              " indents rounded to a multiple
+set shiftround                                                   " indents rounded to a multiple
 
 " display indentation guides
 " set list listchars=tab:\|\ ,trail:∙
@@ -103,30 +104,30 @@ set list listchars=tab:\|\ ,
 set laststatus=2            " necessary to display the lightline statusline
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Searching
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set hlsearch
-set incsearch                                   " don't constantly update search
+set noincsearch                                                   " don't constantly update search
 set ignorecase
 set smartcase
-set showmatch                                   " briefly jump to matching bracket
-set wildignore=*.swp,*.pyc,*.class              " These are ignored in wildcard searches
-set grepprg=rg\ --vimgrep                       " Program used with the :grep command
+set noshowmatch                                                   " briefly jump to matching bracket
+set wildignore=*.swp,*.pyc,*.class                                " These are ignored in wildcard searches
+set grepprg=rg\ --vimgrep                                         " Program used with the :grep command
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Miscellaneous Vim Settings
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set noswapfile                                   " Turns off vim swap files
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set noswapfile                                                    " Turns off vim swap files
 if has ("gui_running")
-    set backspace=2                             " Ensure Backspace key works in Insert mode for gVim
+    set backspace=2                                               " Ensure Backspace key works in Insert mode for gVim
 endif
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Mappings
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " this is the default mapleader anyway, but for posterity:
 let mapleader="\\"
 
@@ -163,9 +164,9 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Word Processor
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " `:call WP()`      opens the word processor mode
 " `z=`              displays corrections
 " `zg`              adds words to dictionary
@@ -220,9 +221,9 @@ function! LazyWP()
 endfunction
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Coc code completion settings
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
@@ -236,7 +237,7 @@ endfunction
 
 " Coc (Language) Extensions
 let g:coc_global_extensions = [
-        \'coc-python',
+        \'coc-pyright',
         \'coc-tslint-plugin',
         \'coc-tsserver',
         \'coc-emmet',
@@ -247,9 +248,9 @@ let g:coc_global_extensions = [
         \]
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Nerdtree Settings
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Opens Nerdtree automatically if vim starts with no specified files
 " Also, increases the amount of columns that it uses
 autocmd StdinReadPre * let s:std_in=1
@@ -260,17 +261,27 @@ autocmd VimEnter *
             \ | endif
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugin Variables
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " lightline statusline colorscheme (see :help g:lightline.colorscheme)
-let g:lightline = {
-      \ 'colorscheme': 'selenized_light',
-      \ }
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" what lightline display when active
+let g:lightline = {
+    \ 'colorscheme': 'seoul256', 
+    \ 'active': {
+    \     'left': [   [ 'mode', 'paste'],
+    \                 [ 'relativepath' ],
+    \                 [ 'readonly', 'modified'], ],
+    \     'right': [  [ 'lineinfo' ],
+    \                 [ 'percent'],
+    \                 [ 'fileformat', 'fileencoding', 'filetype'], ],
+    \ }
+    \ }
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => End-of-Vimrc commands
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set cmdheight=1
 set shortmess=at
 set noshowcmd
