@@ -41,7 +41,7 @@ zplug load
 
 export TERM=xterm-256color
 
-alias gitfresh='sh ~/.git_fresh'
+alias gitfresh='sh ~/.git_fresh.sh'
 
 alias gitcycle='echo "git fetch -q && git pull -q && git push -q";
     git fetch -q && git pull -q && git push -q'
