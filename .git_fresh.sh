@@ -42,8 +42,8 @@ function git_is_in_remote() {
 function git_check_me_out() {
     local branch=${1}
     if git_is_in_remote $branch; then 
-        echo "git checkout $branch; git fetch && git pull";
-        git checkout $branch -q; git fetch -q && git pull -q;
+        echo "git checkout -B $branch origin/$branch; git fetch && git pull";
+        git checkout -B $branch origin/$branch -q; git fetch -q && git pull -q;
         return 0 # 'true'
     else
         return 1 # 'false'
