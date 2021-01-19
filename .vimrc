@@ -2,8 +2,8 @@ set nocompatible
 
 filetype off
 if has("gui_running") && !has("gui_macvim") 
-    set rtp+=$HOME/bundle/Vundle.vim/
-    call vundle#begin('$HOME/bundle/')
+    set rtp+=$HOME/.vim/bundle/Vundle.vim/
+    call vundle#begin()
 else                                                            " Vundle for others (macvim)
     set rtp+=~/.vim/bundle/Vundle.vim
     call vundle#begin()
@@ -56,11 +56,7 @@ filetype plugin on
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Styling
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if has("gui_running") && !has("gui_macvim") 
-    colorscheme peachpuff
-else
-    colorscheme parsec
-endif
+colorscheme parsec
 set colorcolumn=80
 syntax enable
 set number
