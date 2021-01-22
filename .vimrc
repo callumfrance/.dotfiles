@@ -1,54 +1,57 @@
 set nocompatible
-
 filetype off
-if has("gui_running") && !has("gui_macvim") 
-    set rtp+=$HOME/.vim/bundle/Vundle.vim/
-    call vundle#begin()
-else                                                            " Vundle for others (macvim)
-    set rtp+=~/.vim/bundle/Vundle.vim
-    call vundle#begin()
-endif
 
 
-Plugin 'VundleVim/Vundle.vim'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Vundle Plugins
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plugin 'flazz/vim-colorschemes'
-Plugin 'vim-scripts/ScrollColors'                               " Colour wheel
-Plugin 'junegunn/goyo.vim'                                      " Comfortable page spacing
-Plugin 'tpope/vim-surround'                                     " Parentheses; bracket; tag changings
-Plugin 'Yggdroot/indentLine'                                    " support for using spaces to indent
-Plugin 'itchyny/lightline.vim'                                  " minimal statusline
+if !has('nvim')
+    if has("gui_running") && !has("gui_macvim")
+        set rtp+=$HOME/bundle/Vundle.vim/
+        call vundle#begin('$HOME/bundle/')
+    else                                                            " Vundle for others (macvim)
+        set rtp+=~/.vim/bundle/Vundle.vim
+        call vundle#begin()
+    endif
+
+    Plugin 'VundleVim/Vundle.vim'
+    Plugin 'flazz/vim-colorschemes'
+    Plugin 'vim-scripts/ScrollColors'                               " Colour wheel
+    Plugin 'junegunn/goyo.vim'                                      " Comfortable page spacing
+    Plugin 'tpope/vim-surround'                                     " Parentheses; bracket; tag changings
+    Plugin 'Yggdroot/indentLine'                                    " support for using spaces to indent
+    Plugin 'itchyny/lightline.vim'                                  " minimal statusline
 
 " Software project management
-Plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }           " command-line fuzzy finder
-Plugin 'junegunn/fzf.vim'                                       " vim-bindings for fzf 
-Plugin 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}    " code completion
-Plugin 'preservim/nerdtree'                                     " file system explorer
-Plugin 'Xuyuanp/nerdtree-git-plugin'                            " nerdtree git status flags
+    Plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }           " command-line fuzzy finder
+    Plugin 'junegunn/fzf.vim'                                       " vim-bindings for fzf 
+    Plugin 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}    " code completion
+    Plugin 'preservim/nerdtree'                                     " file system explorer
+    Plugin 'Xuyuanp/nerdtree-git-plugin'                            " nerdtree git status flags
 
 " Language specific plugins
-Plugin 'mattn/emmet-vim'                                        " HTML settings
-Plugin 'ap/vim-css-color'                                       " css hex colour highlighting
-Plugin 'jparise/vim-graphql'                                    " GraphQL detect; highl; indent
-Plugin 'ianks/vim-tsx'                                          " typescript XML highl; indent
-Plugin 'leafgarland/typescript-vim'                             " typescript syntax; highl; indent
-Plugin 'rayburgemeestre/phpfolding.vim'                         " PHP folding syntaxer
+    Plugin 'mattn/emmet-vim'                                        " HTML settings
+    Plugin 'ap/vim-css-color'                                       " css hex colour highlighting
+    Plugin 'jparise/vim-graphql'                                    " GraphQL detect; highl; indent
+    Plugin 'ianks/vim-tsx'                                          " typescript XML highl; indent
+    Plugin 'leafgarland/typescript-vim'                             " typescript syntax; highl; indent
+    Plugin 'rayburgemeestre/phpfolding.vim'                         " PHP folding syntaxer
 
 " New plugins that aren't definite includes yet
-Plugin 'towolf/vim-helm'                                        " Vim syntax for helm templates
-Plugin 'yuezk/vim-js'
-Plugin 'maxmellon/vim-jsx-pretty'
+    Plugin 'towolf/vim-helm'                                        " Vim syntax for helm templates
+    Plugin 'yuezk/vim-js'
+    Plugin 'maxmellon/vim-jsx-pretty'
 
 
-if has('nvim') || has('patch-8.0.902')                          " Shows git differences in left-hand column
-  Plugin 'mhinz/vim-signify'
-else
-  Plugin 'mhinz/vim-signify', { 'branch': 'legacy' }
+    if has('nvim') || has('patch-8.0.902')                          " Shows git differences in left-hand column
+    Plugin 'mhinz/vim-signify'
+    else
+    Plugin 'mhinz/vim-signify', { 'branch': 'legacy' }
+    endif
+
+    call vundle#end()
 endif
 
-call vundle#end()
 filetype plugin indent on
 filetype plugin on
 
@@ -56,11 +59,18 @@ filetype plugin on
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Styling
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-colorscheme parsec
-set colorcolumn=80
+if has("nvim")
+    colorscheme obsidian
+    set colorcolumn=0
+else
+    colorscheme parsec
+    set colorcolumn=80
+endif
 syntax enable
 set number
-set antialias                                                   " smoother fonts
+if !has('nvim')
+    set antialias                                               " smoother fonts
+endif
 set title                                                       " gives window the title of file
 set wildmenu                                                    " tab completion in NORM gives menu
 set encoding=utf-8                                                               
@@ -127,7 +137,6 @@ endif
 " this is the default mapleader anyway, but for posterity:
 let mapleader="\\"
 
-nnoremap ; :
 nnoremap <space> :w<CR>:nohl<CR>
 command WQ wq
 command Wq wq
@@ -158,7 +167,9 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+
 nmap <leader>qf  <Plug>(coc-fix-current)
+nmap <leader>rn <Plug>(coc-rename)
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -219,6 +230,13 @@ endfunction
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => FZF Fuzzy Finder 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+map <leader>f :Files<CR>
+map <leader>b :Buffer<CR>
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Coc code completion settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 inoremap <silent><expr> <TAB>
@@ -251,12 +269,14 @@ let g:coc_global_extensions = [
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Opens Nerdtree automatically if vim starts with no specified files
 " Also, increases the amount of columns that it uses
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * 
-            \ if argc() == 0 && !exists("s:std_in") 
-            \ | NERDTree 
-            \ | set columns=110
-            \ | endif
+if !has('nvim')
+    autocmd StdinReadPre * let s:std_in=1
+    autocmd VimEnter * 
+                \ if argc() == 0 && !exists("s:std_in") 
+                \ | NERDTree 
+                \ | set columns+=20
+                \ | endif
+endif
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -276,6 +296,7 @@ let g:lightline = {
     \                 [ 'fileformat', 'fileencoding', 'filetype'], ],
     \ }
     \ }
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => End-of-Vimrc commands
