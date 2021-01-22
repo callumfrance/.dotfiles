@@ -158,6 +158,7 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+nmap <leader>qf  <Plug>(coc-fix-current)
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -241,6 +242,7 @@ let g:coc_global_extensions = [
         \'coc-html',
         \'coc-json',
         \'coc-phpls',
+        \'coc-omnisharp',
         \]
 
 
