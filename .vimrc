@@ -253,13 +253,16 @@ endfunction
 " Coc (Language) Extensions
 let g:coc_global_extensions = [
         \'coc-pyright',
-        \'coc-tslint-plugin',
-        \'coc-tsserver',
         \'coc-emmet',
         \'coc-css',
         \'coc-html',
         \'coc-json',
         \'coc-phpls',
+        \'coc-snippets',
+        \'coc-eslint',
+        \'coc-tslint-plugin',
+        \'coc-tsserver',
+        \'coc-prettier',
         \'coc-omnisharp',
         \]
 
@@ -302,7 +305,7 @@ let g:lightline = {
 " => End-of-Vimrc commands
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set cmdheight=1
-set shortmess=at
+set shortmess+=c
 set noshowcmd
 silent!
 syntax on

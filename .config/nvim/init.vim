@@ -22,23 +22,24 @@ Plug 'preservim/nerdtree'                                     " file system expl
 Plug 'Xuyuanp/nerdtree-git-plugin'                            " nerdtree git status flags
 
 " Language specific plugins
+Plug 'dense-analysis/ale'                                     " Asynchronous Lint Engine
+Plug 'sheerun/vim-polyglot'                                   " Many vim language packs
 Plug 'mattn/emmet-vim'                                        " HTML settings
 Plug 'ap/vim-css-color'                                       " css hex colour highlighting
-Plug 'jparise/vim-graphql'                                    " GraphQL detect; highl; indent
-Plug 'ianks/vim-tsx'                                          " typescript XML highl; indent
-Plug 'leafgarland/typescript-vim'                             " typescript syntax; highl; indent
-Plug 'rayburgemeestre/phpfolding.vim'                         " PHP folding syntaxer
 
-" New plugins that aren't definite includes yet
-Plug 'towolf/vim-helm'                                        " Vim syntax for helm templates
-Plug 'yuezk/vim-js'
-Plug 'maxmellon/vim-jsx-pretty'
+Plug 'mhinz/vim-signify'                                      " Shows git differences in left-hand column
+Plug 'machakann/vim-sandwich'                                 " add/delete/replace surroundings of a sandwiched textobject, like (foo), 'bar'
+Plug 'editorconfig/editorconfig-vim'                          " consistent coding styles for github repositories, using `.editorconfig` files
 
 
-Plug 'mhinz/vim-signify'                              " Shows git differences in left-hand column
-Plug 'jiangmiao/auto-pairs'                             " Insert or delete brackets, parens, quotes in pair.
-Plug 'machakann/vim-sandwich'                           " add/delete/replace surroundings of a sandwiched textobject, like (foo), 'bar'
-Plug 'editorconfig/editorconfig-vim'                    " consistent coding styles for github repositories, using `.editorconfig` files
+" These have (probably) been made redundant by vim-polyglot
+" Plug 'towolf/vim-helm'                                        " Vim syntax for helm templates
+" Plug 'yuezk/vim-js'
+" Plug 'maxmellon/vim-jsx-pretty'
+" Plug 'rayburgemeestre/phpfolding.vim'                         " PHP folding syntaxer
+" Plug 'leafgarland/typescript-vim'                             " typescript syntax; highl; indent
+" Plug 'jparise/vim-graphql'                                    " GraphQL detect; highl; indent
+" Plug 'ianks/vim-tsx'                                          " typescript XML highl; indent
 
 call plug#end()
 
@@ -48,3 +49,14 @@ source ~/.vimrc
 colorscheme obsidian
 set mouse+=a
 set colorcolumn=0
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ALE Settings
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:ale_fixers = {
+        \ 'javascript': ['eslint']
+    \ }
+
+let g:ale_sign_error = '❌'
+let g:ale_sign_warning = '⚠️'
+let g:ale_fix_on_save = 1
