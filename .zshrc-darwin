@@ -8,5 +8,6 @@ export PATH="/usr/local/opt/php@7.4/bin:$PATH"
 export PATH="/usr/local/opt/php@7.4/sbin:$PATH"
 source <(helm completion zsh)               # Auto-Completion support for helm
 source <(kubectl completion zsh)            # Auto-Completion support for kubectl
+compinit
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"

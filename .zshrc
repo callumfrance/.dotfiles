@@ -2,17 +2,26 @@ PROMPT='%F{254}%2~%f $ '                    # zsh command-line prompt
                                             # https://jonasjacek.github.io/colors/
 
 autoload -U +X compinit && compinit
-source <(kubectl completion zsh)            # Auto-Completion support for kubectl
-compinit
 
-source <(helm completion zsh)               # Auto-Completion support for helm
-
+##################################################
 # Optional setup for fzf
 # https://dev.to/iggredible/how-to-search-faster-in-vim-with-fzf-vim-36ko
+##################################################
 if type rg &> /dev/null; then
   export FZF_DEFAULT_COMMAND='rg --files'
   export FZF_DEFAULT_OPTS='-m --height 50% --border'
 fi
+
+# Some zshrc should only be ran on specific kinds of devices
+# Source the files with those commands here
+case "$OSTYPE" in 
+    darwin*)
+        source $HOME/.zshrc-darwin
+    ;;
+    linux*)
+        source $HOME/.zshrc-linux
+    ;;
+esac
 
 ##################################################
 # Shell History and Notifications
