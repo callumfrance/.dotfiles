@@ -61,6 +61,7 @@ source $ZPLUG_HOME/init.zsh
 zplug 'zplug/zplug', hook-build:'zplug --self-manage'       # let zplug manage zplug
 zplug "paulirish/git-open", as:plugin                       # git open command
 zplug "zsh-users/zsh-autosuggestions", as:plugin            # zsh cmd suggestions
+zplug "zsh-users/zsh-syntax-highlighting", as:plugin            # zsh cmd suggestions
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check; then
