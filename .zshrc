@@ -1,5 +1,4 @@
 PROMPT='%F{254}%2~%f $ '                    # zsh command-line prompt
-                                            # https://jonasjacek.github.io/colors/
 
 autoload -U +X compinit && compinit
 
@@ -36,13 +35,15 @@ unsetopt beep                   # Do not beep on errors
 # Aliases
 ##################################################
 # Git
-alias gs="git status"
-alias gn='echo "git reset --hard && git clean -df";
-    git reset --hard && git clean -df'
+alias ga='git add -p'
+alias gc='git commit -m'
 alias gf='sh ~/.git_fresh.sh'
-alias gc='echo "git fetch -q && git pull -q && git push -q";
-    git fetch -q && git pull -q && git push -q'
 alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+alias gnah='echo "git reset --hard && git clean -df";
+    git reset --hard && git clean -df'
+alias gs="git status"
+alias gy='echo "git fetch -q && git pull -q && git push -q";
+    git fetch -q && git pull -q && git push -q'
 
  # Opening applications
 alias n='nvim `fzf`'
@@ -75,24 +76,3 @@ fi
 zplug load
 
 export TERM=xterm-256color
-
-
-##################################################
-# Aliases
-##################################################
-# Git
-alias gs="git status"
-alias gn='echo "git reset --hard && git clean -df";
-    git reset --hard && git clean -df'
-alias gf='sh ~/.git_fresh.sh'
-alias gc='echo "git fetch -q && git pull -q && git push -q";
-    git fetch -q && git pull -q && git push -q'
-alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
-
-# Opening applications
-alias n='nvim `fzf`'
-alias chromepen='open -a "Google Chrome"'
-
-function hejq() {
-    stern -o raw heweb | egrep --line-buffered '^{' | jq .;
-}
