@@ -1,6 +1,12 @@
 export ZPLUG_HOME=$(brew --prefix)/opt/zplug
 
+alias giveMeK8s='cd ~/Workspace/k8s;
+    gf &&
+    ./tools/setup_dev_environment.py'
+
 export PATH="/usr/local/opt/php@7.4/bin:$PATH"
 export PATH="/usr/local/opt/php@7.4/sbin:$PATH"
 source <(helm completion zsh)               # Auto-Completion support for helm
 source <(kubectl completion zsh)            # Auto-Completion support for kubectl
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
