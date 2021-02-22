@@ -22,25 +22,24 @@ if !has('nvim')
     Plugin 'Yggdroot/indentLine'                                    " support for using spaces to indent
     Plugin 'itchyny/lightline.vim'                                  " minimal statusline
 
-" Software project management
+    " Software project management
     Plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }           " command-line fuzzy finder
     Plugin 'junegunn/fzf.vim'                                       " vim-bindings for fzf 
     Plugin 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}    " code completion
     Plugin 'preservim/nerdtree'                                     " file system explorer
     Plugin 'Xuyuanp/nerdtree-git-plugin'                            " nerdtree git status flags
 
-" Language specific plugins
+    " Language specific plugins
+    Plugin 'dense-analysis/ale'                                     " Asynchronous Lint Engine
+    Plugin 'sheerun/vim-polyglot'                                   " Many vim language packs
     Plugin 'mattn/emmet-vim'                                        " HTML settings
     Plugin 'ap/vim-css-color'                                       " css hex colour highlighting
-    Plugin 'jparise/vim-graphql'                                    " GraphQL detect; highl; indent
-    Plugin 'ianks/vim-tsx'                                          " typescript XML highl; indent
-    Plugin 'leafgarland/typescript-vim'                             " typescript syntax; highl; indent
-    Plugin 'rayburgemeestre/phpfolding.vim'                         " PHP folding syntaxer
 
-" New plugins that aren't definite includes yet
-    Plugin 'towolf/vim-helm'                                        " Vim syntax for helm templates
-    Plugin 'yuezk/vim-js'
-    Plugin 'maxmellon/vim-jsx-pretty'
+    Plugin 'mhinz/vim-signify'                                      " Shows git differences in left-hand column
+    Plugin 'machakann/vim-sandwich'                                 " add/delete/replace surroundings of a sandwiched textobject, like (foo), 'bar'
+    Plugin 'easymotion/vim-easymotion'                              " More navigable motions
+    Plugin 'editorconfig/editorconfig-vim'                          " consistent coding styles for github repositories, using `.editorconfig` files
+    Plugin 'AndrewRadev/splitjoin.vim'                              " Easily split and join lines of code
 
 
     if has('nvim') || has('patch-8.0.902')                          " Shows git differences in left-hand column
@@ -228,13 +227,11 @@ function! LazyWP()
     endif
 endfunction
 
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => FZF Fuzzy Finder 
+" => FZF Fuzzy Finder
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map <leader>f :Files<CR>
 map <leader>b :Buffer<CR>
-
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Coc code completion settings
@@ -262,9 +259,9 @@ let g:coc_global_extensions = [
         \'coc-eslint',
         \'coc-tslint-plugin',
         \'coc-tsserver',
-        \'coc-prettier',
         \'coc-omnisharp',
         \]
+" coc-prettier is too annoying with ALE highlighting
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

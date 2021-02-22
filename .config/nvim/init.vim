@@ -1,3 +1,5 @@
+let g:ale_disable_lsp = 1                                     " allows Coc to control language server protocol and not ALE
+
 "automated installation of vimplug if not installed
 if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
     silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
@@ -6,7 +8,6 @@ if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
-
 Plug 'flazz/vim-colorschemes'
 Plug 'vim-scripts/ScrollColors'                               " Colour wheel
 Plug 'junegunn/goyo.vim'                                      " Comfortable page spacing
@@ -29,17 +30,9 @@ Plug 'ap/vim-css-color'                                       " css hex colour h
 
 Plug 'mhinz/vim-signify'                                      " Shows git differences in left-hand column
 Plug 'machakann/vim-sandwich'                                 " add/delete/replace surroundings of a sandwiched textobject, like (foo), 'bar'
+Plug 'easymotion/vim-easymotion'                              " More navigable motions
 Plug 'editorconfig/editorconfig-vim'                          " consistent coding styles for github repositories, using `.editorconfig` files
-
-
-" These have (probably) been made redundant by vim-polyglot
-" Plug 'towolf/vim-helm'                                        " Vim syntax for helm templates
-" Plug 'yuezk/vim-js'
-" Plug 'maxmellon/vim-jsx-pretty'
-" Plug 'rayburgemeestre/phpfolding.vim'                         " PHP folding syntaxer
-" Plug 'leafgarland/typescript-vim'                             " typescript syntax; highl; indent
-" Plug 'jparise/vim-graphql'                                    " GraphQL detect; highl; indent
-" Plug 'ianks/vim-tsx'                                          " typescript XML highl; indent
+Plug 'AndrewRadev/splitjoin.vim'                              " Easily split and join lines of code
 
 call plug#end()
 
@@ -53,10 +46,12 @@ set colorcolumn=0
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ALE Settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:ale_fixers = {
-        \ 'javascript': ['eslint']
-    \ }
-
 let g:ale_sign_error = '❌'
 let g:ale_sign_warning = '⚠️'
+let g:ale_set_highlights = 1
+highlight ALEError ctermbg=DarkCyan
+highlight ALEWarning ctermbg=DarkGreen
 let g:ale_fix_on_save = 1
+" let g:ale_exclude_highlights = ['*prettier*', '*Replace*']  " this POS command does not work for some reason
+" as such, do not use coc-prettier because it is too annoying
+
