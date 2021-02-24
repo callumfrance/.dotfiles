@@ -27,6 +27,7 @@ Plug 'dense-analysis/ale'                                     " Asynchronous Lin
 Plug 'sheerun/vim-polyglot'                                   " Many vim language packs
 Plug 'mattn/emmet-vim'                                        " HTML settings
 Plug 'ap/vim-css-color'                                       " css hex colour highlighting
+Plug 'rayburgemeestre/phpfolding.vim'                         " PHP folding
 
 Plug 'mhinz/vim-signify'                                      " Shows git differences in left-hand column
 Plug 'machakann/vim-sandwich'                                 " add/delete/replace surroundings of a sandwiched textobject, like (foo), 'bar'
