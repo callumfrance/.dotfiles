@@ -35,7 +35,6 @@ if !has('nvim')
     Plugin 'mattn/emmet-vim'                                        " HTML settings
     Plugin 'ap/vim-css-color'                                       " css hex colour highlighting
 
-    Plugin 'mhinz/vim-signify'                                      " Shows git differences in left-hand column
     Plugin 'machakann/vim-sandwich'                                 " add/delete/replace surroundings of a sandwiched textobject, like (foo), 'bar'
     Plugin 'easymotion/vim-easymotion'                              " More navigable motions
     Plugin 'editorconfig/editorconfig-vim'                          " consistent coding styles for github repositories, using `.editorconfig` files
