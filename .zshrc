@@ -39,6 +39,8 @@ alias chromepen='open -a "Google Chrome"'
 # Git
 alias gaa='git add *'
 alias ga='git add -p'
+alias gbl='git branch -l'
+alias gbd='git branch -d'
 alias gc='git commit -m'
 alias gch='git checkout -b'
 alias gf='sh ~/.git_fresh.sh'
