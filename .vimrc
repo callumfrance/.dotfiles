@@ -233,6 +233,29 @@ map <leader>f :Files<CR>
 map <leader>b :Buffer<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Emmet Shortcuts
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" See: https://raw.githubusercontent.com/mattn/emmet-vim/master/TUTORIAL
+" Tag completion
+map <leader>,, i<c-y>,
+" Balance a tag inward
+map <leader>,d i<c-y>d
+" Balance a tag outward
+map <leader>,D i<c-y>D
+" Go to next edit point
+map <leader>,n i<c-y>n
+" Go to previous edit point
+map <leader>,N i<c-y>N
+" Merge lines
+map <leader>,m i<c-y>m
+" Remove a tag
+map <leader>,k i<c-y>k
+" Split/join tags
+map <leader>,j i<c-y>j
+" Comment/uncomment tags
+map <leader>,/ i<c-y>/
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Coc code completion settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 inoremap <silent><expr> <TAB>
