@@ -1,5 +1,13 @@
-# Path to your oh-my-zsh installation.
-export ZSH="/Users/Callum/.oh-my-zsh"
+# Some zshrc should only be ran on specific kinds of devices
+# Source the files with those commands here
+case "$OSTYPE" in
+    darwin*)
+        source $HOME/.zshrc-darwin
+    ;;
+    linux*)
+        source $HOME/.zshrc-linux
+    ;;
+esac
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -111,17 +119,6 @@ if type rg &> /dev/null; then
   export FZF_DEFAULT_OPTS='-m --height 50% --border'
 fi
 
-# Some zshrc should only be ran on specific kinds of devices
-# Source the files with those commands here
-case "$OSTYPE" in 
-    darwin*)
-        source $HOME/.zshrc-darwin
-    ;;
-    linux*)
-        source $HOME/.zshrc-linux
-    ;;
-esac
-
 ##################################################
 # Shell History and Notifications
 ##################################################
@@ -165,7 +162,6 @@ alias o='open .'
 ##################################################
 # ZPlug Plugins
 ##################################################
-export ZPLUG_HOME=$(brew --prefix)/opt/zplug
 source $ZPLUG_HOME/init.zsh
 
 zplug 'zplug/zplug', hook-build:'zplug --self-manage'       # let zplug manage zplug

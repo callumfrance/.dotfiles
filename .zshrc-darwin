@@ -1,3 +1,4 @@
+export ZSH="/Users/Callum/.oh-my-zsh"
 export ZPLUG_HOME=$(brew --prefix)/opt/zplug
 
 alias k='~/symlinks/k'
@@ -11,7 +12,6 @@ path+=('/usr/local/opt/php@7.4/sbin')
 path+=('~/symlinks')
 source <(helm completion zsh)               # Auto-Completion support for helm
 source <(kubectl completion zsh)            # Auto-Completion support for kubectl
-compinit
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 export PATH

@@ -1,2 +1,2 @@
+export ZSH="/usr/share/oh-my-zsh/"
 export ZPLUG_HOME=$HOME/ProgramFolder/.zplug
-compinit
