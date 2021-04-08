@@ -150,14 +150,23 @@ alias gs='git status'
 alias gy='echo "git fetch -q && git pull -q && git push -q";
     git fetch -q && git pull -q && git push -q'
 
+function git_branch_tidy() {
+    # See https://stackoverflow.com/questions/10610327/delete-all-local-git-branches
+    git for-each-ref --format '%(refname:short)' refs/heads | grep -v master | xargs git branch -D
+}
+
+function hejq() {
+    stern -o raw heweb | egrep --line-buffered '^{' | jq .;
+}
+
+function hi() {
+    fortune | cowsay | lolcat
+}
+
  # Opening applications
 alias n='nvim `fzf`'
 
 alias o='open .'
-
- function hejq() {
-    stern -o raw heweb | egrep --line-buffered '^{' | jq .;
-}
 
 ##################################################
 # ZPlug Plugins
