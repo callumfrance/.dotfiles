@@ -10,8 +10,6 @@ alias giveMeK8s='cd ~/Workspace/k8s;
 path+=('/usr/local/opt/php@7.4/bin')
 path+=('/usr/local/opt/php@7.4/sbin')
 path+=('~/symlinks')
-source <(helm completion zsh)               # Auto-Completion support for helm
-source <(kubectl completion zsh)            # Auto-Completion support for kubectl
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 export PATH

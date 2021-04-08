@@ -108,8 +108,6 @@ export EDITOR='nvim'
 
 # PROMPT='%F{254}%2~%f $ '                    # zsh command-line prompt
 
-autoload -U +X compinit && compinit
-
 ##################################################
 # Optional setup for fzf
 # https://dev.to/iggredible/how-to-search-faster-in-vim-with-fzf-vim-36ko
@@ -190,3 +188,12 @@ fi
 zplug load
 
 export TERM=xterm-256color
+
+case "$OSTYPE" in
+    darwin*)
+        source <(helm completion zsh)               # Auto-Completion support for helm
+        source <(kubectl completion zsh)            # Auto-Completion support for kubectl
+    ;;
+esac
+
+autoload -U +X compinit && compinit
