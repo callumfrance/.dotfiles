@@ -142,7 +142,7 @@ alias gf='sh ~/.git_fresh.sh'
 alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 alias gnah='echo "git reset --hard && git clean -df";
     git reset --hard && git clean -df'
-alias go='git open'
+alias gop='git open'
 alias gp='git push'
 alias gs='git status'
 alias gy='echo "git fetch -q && git pull -q && git push -q";
