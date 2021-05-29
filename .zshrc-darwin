@@ -1,6 +1,7 @@
 export ZSH="/Users/Callum/.oh-my-zsh"
 export ZPLUG_HOME=$(brew --prefix)/opt/zplug
 
+alias o='open .'
 alias k='~/symlinks/k'
 
 alias giveMeK8s='cd ~/Workspace/k8s;

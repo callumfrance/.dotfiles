@@ -164,8 +164,6 @@ function hi() {
  # Opening applications
 alias n='nvim `fzf`'
 
-alias o='open .'
-
 ##################################################
 # ZPlug Plugins
 ##################################################
