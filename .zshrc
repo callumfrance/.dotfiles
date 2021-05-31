@@ -161,8 +161,22 @@ function hi() {
     fortune | cowsay | lolcat
 }
 
- # Opening applications
+# Opening applications
 alias n='nvim `fzf`'
+
+alias yd='yarn && yarn dev'
+alias ys='yarn && yarn storybook'
+
+function gmerge() {
+    gaa;
+    gc $1;
+    gs;
+}
+
+function gmergeyarn() {
+    yarn && yarn fix;
+    gmerge $1;
+}
 
 ##################################################
 # ZPlug Plugins
