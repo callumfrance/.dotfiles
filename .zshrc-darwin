@@ -2,15 +2,15 @@ export ZSH="/Users/Callum/.oh-my-zsh"
 export ZPLUG_HOME=$(brew --prefix)/opt/zplug
 
 alias o='open .'
-alias k='~/symlinks/k'
+alias k2="${HOME}/symlinks/k"
 
-alias giveMeK8s='cd ~/Workspace/k8s;
+alias giveMeK8s="cd ${HOME}/Workspace/k8s;
     gf &&
-    ./tools/setup_dev_environment.py'
+    ./tools/setup_dev_environment.py"
 
 path+=('/usr/local/opt/php@7.4/bin')
 path+=('/usr/local/opt/php@7.4/sbin')
-path+=('~/symlinks')
+path+=("${HOME}/symlinks")
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 export PATH
