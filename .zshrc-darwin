@@ -8,6 +8,14 @@ alias giveMeK8s="cd ${HOME}/Workspace/k8s;
     gf &&
     ./tools/setup_dev_environment.py"
 
+function ps8() {
+    vendor/bin/phpstan analyze --configuration=.phpstan/level-8.neon $1;
+}
+
+function pcsf() {
+    vendor/bin/php-cs-fixer fix $1;
+}
+
 path+=('/usr/local/opt/php@7.4/bin')
 path+=('/usr/local/opt/php@7.4/sbin')
 path+=("${HOME}/symlinks")
