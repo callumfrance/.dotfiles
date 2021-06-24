@@ -25,7 +25,7 @@ if !has('nvim')
     " Software project management
     Plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }           " command-line fuzzy finder
     Plugin 'junegunn/fzf.vim'                                       " vim-bindings for fzf 
-    Plugin 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}    " code completion
+    Plugin 'neoclide/coc.nvim', {'branch': 'release'}    " code completion
     Plugin 'preservim/nerdtree'                                     " file system explorer
     Plugin 'Xuyuanp/nerdtree-git-plugin'                            " nerdtree git status flags
 

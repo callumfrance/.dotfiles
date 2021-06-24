@@ -38,7 +38,7 @@ if has("gui_running") && !has("gui_macvim")
     """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
     " => Font and Cursor
     """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-    set guifont=Fira\ Code\ 10          " font and font size
+    set guifont=Hack:h10:cANSI          " font and font size
 
     set guicursor+=n-v-c:blinkon0       " cursor doesn't blink
 
