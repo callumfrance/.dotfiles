@@ -138,7 +138,7 @@ alias gbl='git branch -l'
 alias gbd='git branch -d'
 alias gc='git commit -m'
 alias gch='git checkout -b'
-alias gf='sh ~/.git_fresh.sh'
+alias gf='bash ~/.git_fresh.sh'
 alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 alias gnah='echo "git reset --hard && git clean -df";
     git reset --hard && git clean -df'
